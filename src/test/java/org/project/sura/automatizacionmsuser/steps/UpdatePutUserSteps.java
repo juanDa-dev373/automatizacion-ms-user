@@ -5,6 +5,7 @@ import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
+import org.project.sura.automatizacionmsuser.context.DataGenerator;
 import org.project.sura.automatizacionmsuser.context.TestContext;
 
 import static io.restassured.RestAssured.given;
@@ -25,14 +26,17 @@ public class UpdatePutUserSteps {
 
     @When("realizo una solicitud PUT a {string}")
     public void realizo_solicitud_put_a(String endpoint){
-        String body = """
+        String body = String.format("""
                {
-                  "firstname": "string",
-                  "lastname": "string",
-                  "country": "string",
-                  "newPassword": "string"
+                  "firstname": "%s",
+                  "lastname": "%s",
+                  "country": "%s",
+                  "newPassword": "%s"
                }
-        """;
+        """, DataGenerator.generateUserData().get("firstname"),
+                DataGenerator.generateUserData().get("lastname"),
+                DataGenerator.generateUserData().get("country"),
+                DataGenerator.generateUserData().get("password"));
         String token = TestContext.getToken();
         Long id = TestContext.getId();
         response = given()
