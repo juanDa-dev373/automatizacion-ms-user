@@ -1,6 +1,9 @@
 HELP.md
 .gradle
 build/
+allure-results/
+allure-2.30.0.zip
+target/
 !gradle/wrapper/gradle-wrapper.jar
 !**/src/main/**/build/
 !**/src/test/**/build/
