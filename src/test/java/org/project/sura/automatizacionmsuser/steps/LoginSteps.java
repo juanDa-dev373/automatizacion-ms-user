@@ -17,7 +17,7 @@ public class LoginSteps {
 
     @Given("la API de login está disponible en {string}")
     public void login(String url) {
-        baseUrl = url;
+        baseUrl = System.getProperty("api.url", url);
         RestAssured.baseURI = baseUrl;
     }
 

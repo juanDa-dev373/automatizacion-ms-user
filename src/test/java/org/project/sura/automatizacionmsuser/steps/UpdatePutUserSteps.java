@@ -20,7 +20,7 @@ public class UpdatePutUserSteps {
 
     @Given("la API para el metodo put esta disponible en {string}")
     public void api_disponible(String url){
-        baseUrl = url;
+        baseUrl = System.getProperty("api.url", url);
         RestAssured.baseURI = baseUrl;
     }
 

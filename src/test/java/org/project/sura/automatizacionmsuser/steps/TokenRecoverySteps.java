@@ -19,7 +19,7 @@ public class TokenRecoverySteps {
 
     @Given("la API esta disponible en {string}")
     public void la_api_esta_disponible_en(String url) {
-        baseUrl = url;
+        baseUrl = System.getProperty("api.url", url);;
         RestAssured.baseURI = baseUrl;
     }
 

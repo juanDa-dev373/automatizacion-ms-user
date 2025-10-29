@@ -17,7 +17,7 @@ public class DeleteUserSteps {
 
     @Given("la API para eliminar usuario esta disponible en {string}")
     public void eliminar_usuario(String url){
-        baseUrl = url;
+        baseUrl = System.getProperty("api.url", url);
         RestAssured.baseURI = baseUrl;
     }
 
