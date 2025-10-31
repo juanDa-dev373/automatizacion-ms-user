@@ -16,15 +16,14 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 @Slf4j
 public class DeleteUserSteps {
 
-    private static final Logger log = LoggerFactory.getLogger(DeleteUserSteps.class);
-    private String baseUrl;
+    private static final String BASE_URL = System.getProperty("api.url", "http://localhost:8083");
+
     private Response response;
 
     @Given("la API para eliminar usuario esta disponible en {string}")
     public void eliminar_usuario(String url){
-        baseUrl = System.getProperty("api.url", url);
-        System.out.println("Url del micro: " + baseUrl);
-        RestAssured.baseURI = baseUrl;
+        System.out.println("Url del micro: " + BASE_URL);
+        RestAssured.baseURI = BASE_URL;
     }
 
     @When("se realiza solicitud DELETE a {string}")
