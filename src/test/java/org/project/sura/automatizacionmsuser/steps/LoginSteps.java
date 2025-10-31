@@ -23,7 +23,7 @@ public class LoginSteps {
     @Given("la API de login está disponible en {string}")
     public void login(String url) {
         baseUrl = System.getProperty("api.url", url);
-        log.info("Escuchando desde el puerto: {}", baseUrl);
+        System.out.println("Url del micro: " + baseUrl);
         RestAssured.baseURI = baseUrl;
     }
 

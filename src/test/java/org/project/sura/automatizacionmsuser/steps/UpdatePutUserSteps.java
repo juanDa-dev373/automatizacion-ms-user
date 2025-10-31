@@ -26,7 +26,7 @@ public class UpdatePutUserSteps {
     @Given("la API para el metodo put esta disponible en {string}")
     public void api_disponible(String url){
         baseUrl = System.getProperty("api.url", url);
-        log.info("Escuchando desde el puerto: {}", baseUrl);
+        System.out.println("Url del micro: " + baseUrl);
         RestAssured.baseURI = baseUrl;
     }
 

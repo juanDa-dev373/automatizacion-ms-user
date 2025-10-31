@@ -24,8 +24,8 @@ public class TokenRecoverySteps {
 
     @Given("la API esta disponible en {string}")
     public void la_api_esta_disponible_en(String url) {
-        baseUrl = System.getProperty("api.url", url);;
-        log.info("Escuchando desde el puerto: {}", baseUrl);
+        baseUrl = System.getProperty("api.url", url);
+        System.out.println("Url del micro: " + baseUrl);
         RestAssured.baseURI = baseUrl;
     }
 
