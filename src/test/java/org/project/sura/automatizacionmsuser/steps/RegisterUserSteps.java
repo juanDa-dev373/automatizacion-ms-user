@@ -1,6 +1,7 @@
 package org.project.sura.automatizacionmsuser.steps;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import groovy.util.logging.Slf4j;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -16,9 +17,13 @@ import static org.hamcrest.Matchers.hasKey;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertNotNull;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
+@Slf4j
 public class RegisterUserSteps {
 
+    private static final Logger log = LoggerFactory.getLogger(RegisterUserSteps.class);
     private String baseUrl;
     private Response response;
     private final ObjectMapper mapper = new ObjectMapper();
@@ -26,6 +31,7 @@ public class RegisterUserSteps {
     @Given("la API está disponible en {string}")
     public void la_api_esta_disponible_en(String url) {
         baseUrl = System.getProperty("api.url", url);
+        log.info("Escuchando desde el puerto: {}", baseUrl);
         RestAssured.baseURI = baseUrl;
     }
 

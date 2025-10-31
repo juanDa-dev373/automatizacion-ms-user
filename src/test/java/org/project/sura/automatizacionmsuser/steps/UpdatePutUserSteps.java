@@ -1,5 +1,6 @@
 package org.project.sura.automatizacionmsuser.steps;
 
+import groovy.util.logging.Slf4j;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
@@ -7,20 +8,25 @@ import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.project.sura.automatizacionmsuser.context.DataGenerator;
 import org.project.sura.automatizacionmsuser.context.TestContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import static io.restassured.RestAssured.given;
 import static org.hamcrest.Matchers.hasKey;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@Slf4j
 public class UpdatePutUserSteps {
 
+    private static final Logger log = LoggerFactory.getLogger(UpdatePutUserSteps.class);
     private String baseUrl;
     private Response response;
 
     @Given("la API para el metodo put esta disponible en {string}")
     public void api_disponible(String url){
         baseUrl = System.getProperty("api.url", url);
+        log.info("Escuchando desde el puerto: {}", baseUrl);
         RestAssured.baseURI = baseUrl;
     }
 

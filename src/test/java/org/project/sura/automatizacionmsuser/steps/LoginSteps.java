@@ -1,23 +1,29 @@
 package org.project.sura.automatizacionmsuser.steps;
 
+import groovy.util.logging.Slf4j;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import io.restassured.RestAssured;
 import io.restassured.response.Response;
 import org.project.sura.automatizacionmsuser.context.TestContext;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import static org.hamcrest.Matchers.hasKey;
 import static org.junit.Assert.assertNotNull;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
+@Slf4j
 public class LoginSteps {
+    private static final Logger log = LoggerFactory.getLogger(LoginSteps.class);
     private String baseUrl;
     private Response response;
 
     @Given("la API de login está disponible en {string}")
     public void login(String url) {
         baseUrl = System.getProperty("api.url", url);
+        log.info("Escuchando desde el puerto: {}", baseUrl);
         RestAssured.baseURI = baseUrl;
     }
 
